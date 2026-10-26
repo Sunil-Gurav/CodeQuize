@@ -1,12 +1,85 @@
-# React + Vite
+# Quiz Application - React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A quiz application built with React and Vite that fetches questions from QuizAPI.io.
 
-Currently, two official plugins are available:
+## 🚀 Quick Start (Follow These Steps)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Step 1: Install Dependencies
+```bash
+# Install frontend dependencies
+npm install
 
-## Expanding the ESLint configuration
+# Install backend dependencies
+cd backend
+npm install
+cd ..
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Step 2: Start Backend Server (IMPORTANT - Do This First!)
+Open a terminal and run:
+```bash
+cd backend
+node server.js
+```
+
+You should see: `Quiz proxy backend running on http://localhost:5000`
+
+**⚠️ Keep this terminal running! Don't close it.**
+
+### Step 3: Start Frontend (In a New Terminal)
+Open a **NEW** terminal and run:
+```bash
+npm run dev
+```
+
+The frontend will run on `http://localhost:5173`
+
+### Step 4: Test
+Open your browser to `http://localhost:5173` and try selecting a difficulty level.
+
+## 🔧 Troubleshooting
+
+### Error: "Backend server is not running"
+- Make sure you started the backend server first (Step 2)
+- Check if port 5000 is available
+- Look for the message: `Quiz proxy backend running on http://localhost:5000`
+
+### Test Backend Connection
+Run this command to test if backend is working:
+```bash
+node test-backend.cjs
+```
+
+### Still Not Working?
+1. Check if both terminals are running
+2. Make sure `.env` file exists in the root directory
+3. Restart both servers
+
+## 📁 Project Structure
+
+```
+├── backend/
+│   ├── server.js          # Backend proxy server
+│   └── package.json
+├── src/
+│   ├── Componts/
+│   │   ├── Quiz.jsx       # Main quiz component
+│   │   └── Home.jsx
+│   └── App.jsx
+├── .env                   # API key (already configured)
+└── package.json
+```
+
+## 🎯 How It Works
+
+1. Frontend (React) → Backend (Express) → QuizAPI.io
+2. Backend adds the API key securely
+3. No CORS issues because API key is sent from server
+
+## ✨ Features
+
+- Multiple difficulty levels (Easy, Medium, Hard)
+- Timed questions
+- Score tracking
+- Detailed review of answers
+- Multiple quiz categories
